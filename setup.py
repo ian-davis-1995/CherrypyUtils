@@ -11,5 +11,7 @@ setup(
         "cherrypy",
         "python-ldap",
         "requests",
+        "python-dateutil",
+        "sqlalchemy",
     ],
 )
