@@ -10,6 +10,20 @@ Included are handlers for:
 - url construction and parsing from parts (similar to os.path.join) (url_utils.py)
 - ldap login utilities (login/ldap_auth.py & login/models.py)
 
+## Usage
+
+To use this package in your project as a dependency (using pipenv), you can add it as a package with the following definition:
+
+    [packages]
+    cherrypy_utils = { git = "${USERNAME}:${PASSWORD}@git.mindmodeling.org:ian.davis/CherrypyUtils.git" }
+
+You will need to export appropriate environment variables for USERNAME and PASSWORD.
+See this page for more info: https://pipenv.pypa.io/en/latest/advanced/#injecting-credentials-into-pipfiles-via-environment-variables
+Alternatively, if you save your username/password in git config, pipenv will intelligently use that if you provide the http link instead:
+
+    [packages]
+    cherrypy_utils = { git = "https://git.mindmodeling.org/ian.davis/CherrypyUtils.git" }
+
 ## Development
 
 This package is developed using Pipenv for package management, which makes dealing with pip packages easier.
