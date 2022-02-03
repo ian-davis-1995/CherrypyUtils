@@ -1,5 +1,4 @@
 import cherrypy
-from fatigue_monitoring import environment
 
 
 def ldap_user_authenticated() -> bool:
@@ -7,14 +6,10 @@ def ldap_user_authenticated() -> bool:
 
 
 def authenticate_user(username, password) -> bool:
-    if environment.is_development_mode():
-        cherrypy.session["ldap_authenticated"] = 1
-        return True
-        
     cherrypy.log("Enabled LDAP support and signing in via production mode")
-    
-    from utils.login import ldap_auth
-    
+
+    from cherrypy_utils.login import ldap_auth
+
     if ldap_auth and ldap_auth.ldap_login(username, password):
         cherrypy.session["ldap_authenticated"] = 1
         return True
