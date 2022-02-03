@@ -7,6 +7,8 @@ name = "pypi"
 cherrypy = "*"
 requests = "*"
 python-ldap = "*"
+sqlalchemy = "*"
+python-dateutil = "*"
 
 [dev-packages]
 black = "*"

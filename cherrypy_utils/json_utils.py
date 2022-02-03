@@ -1,10 +1,8 @@
 import datetime
-
-from typing import Dict
-
 import cherrypy
 
-from utils import timestamp_utils
+from typing import Dict
+from cherrypy_utils import timestamp_utils
 
 
 def convert_request_to_entities(converter):

@@ -113,3 +113,32 @@ class SQLAlchemyPlugin(plugins.SimplePlugin):
     def bind(self, session):
         session.remove()
         session.configure(bind=self.sa_engine)
+
+
+""" Example usage of this plugin:
+
+        // Setup step
+        database_name = "test_database"
+
+        cherrypy.tools.digital_deception_database = SQLAlchemyTool(database_name)
+
+        SQLAlchemyPlugin(
+            database_name,
+            cherrypy.engine,
+            Base,
+            connection_string,
+            echo=False,
+            pool_recycle=20000,
+            after_engine_setup=initialize_db,
+        )
+        cherrypy.log("Publishing db create")
+        cherrypy.engine.publish("database_name.db.create")
+
+        // Usage in a view function
+        session = cherrypy.request.databases[database_name]
+
+        session.add(entity)
+        session.commit()
+        session.flush()
+        ... etc
+"""
