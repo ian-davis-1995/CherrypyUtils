@@ -18,9 +18,8 @@ def initialize():
 
     with open("./api.key", "r") as api_key_file:
         API_KEY = api_key_file.read().rstrip("\n")
-
-
-cherrypy.log("Using API KEY {0} for authentication".format(API_KEY))
+        
+    cherrypy.log("Using API KEY {0} for authentication".format(API_KEY))
 
 
 @cherrypy.tools.register("before_handler", name="require_api_key")
