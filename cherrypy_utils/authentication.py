@@ -6,19 +6,19 @@ import cherrypy
 API_KEY = ""
 
 
-def initialize():
+def initialize(api_key_filepath):
     """This needs to be called to setup the required API key properly!
     Should be called at the top/initialization
     """
     global API_KEY
 
-    if not os.path.exists("./api.key"):
-        with open("./api.key", "w") as api_key_file:
+    if not os.path.exists(api_key_filepath):
+        with open(api_key_filepath, "w") as api_key_file:
             api_key_file.write(str(uuid.uuid4()))
 
-    with open("./api.key", "r") as api_key_file:
+    with open(api_key_filepath, "r") as api_key_file:
         API_KEY = api_key_file.read().rstrip("\n")
-        
+
     cherrypy.log("Using API KEY {0} for authentication".format(API_KEY))
 
 
