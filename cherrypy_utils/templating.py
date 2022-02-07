@@ -9,7 +9,6 @@ env = None
 
 def initialize(template_location):
     global env
-    template_location = pathlib.Path(__file__).parent.parent.joinpath("frontend", "templates").resolve()
     cherrypy.log("Loading jinja template engine using filesystem location: {0}".format(template_location))
     env = Environment(
         loader=FileSystemLoader(template_location),
