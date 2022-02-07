@@ -9,6 +9,7 @@ requests = "*"
 python-ldap = "*"
 sqlalchemy = "*"
 python-dateutil = "*"
+jinja2 = "*"
 
 [dev-packages]
 black = "*"
