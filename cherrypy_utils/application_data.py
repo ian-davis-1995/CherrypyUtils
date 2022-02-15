@@ -13,14 +13,14 @@ class ApplicationData:
     def __init__(
         self,
         subdomain,
-        shared_data_directory,
+        shared_data_location,
         application_location,
         template_location,
         api_key_filepath,
         production=True,
     ):
         self.subdomain = subdomain
-        self.shared_data_directory = shared_data_directory  # a directory on the filesystem where any dynamic, shared data that can change over time should be stored.
+        self.shared_data_location = shared_data_location  # a directory on the filesystem where any dynamic, shared data that can change over time should be stored.
         self.application_location = application_location  # type: pathlib.Path
         self.api_key_filepath = api_key_filepath
         self.template_location = template_location
@@ -61,7 +61,7 @@ APPS = {}  #  type: Dict[str, ApplicationData]
 def initialize(
     application_name,
     subdomain,
-    shared_data_directory,
+    shared_data_location,
     application_location,
     template_location,
     api_key_filepath,
@@ -69,7 +69,7 @@ def initialize(
 ):
     APPS[application_name] = ApplicationData(
         subdomain=subdomain,
-        shared_data_directory=shared_data_directory,
+        shared_data_location=shared_data_location,
         application_location=application_location,
         template_location=template_location,
         api_key_filepath=api_key_filepath,
