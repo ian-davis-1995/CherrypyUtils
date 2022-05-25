@@ -1,5 +1,10 @@
 import os
 import pathlib
+import datetime
+
+
+def get_version_number():
+    return datetime.datetime.now().strftime("%Y-%m-%d-%H-%M")
 
 
 def build_docker_container(
