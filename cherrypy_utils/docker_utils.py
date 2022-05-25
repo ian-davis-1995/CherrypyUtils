@@ -16,7 +16,6 @@ def build_docker_container(
     mount_destination="/online_experiments_data",
     restart_policy="always",
 ):
-    os.system("git pull")
     os.system("docker stop {0}".format(container_name))
     os.system("docker rm {0}".format(container_name))
     os.system("docker container prune --force")
