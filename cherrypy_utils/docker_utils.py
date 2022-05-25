@@ -26,7 +26,6 @@ def build_docker_container(
         "docker",
         "run",
         # '--mount type=bind,source="{0}",target={1}'.format(pathlib.Path(mount_source, mount_folder), mount_destination),
-        "-p 8080:8080",
         "-d",
         "--restart {0}".format(restart_policy),
         "--name {0}".format(container_name),
