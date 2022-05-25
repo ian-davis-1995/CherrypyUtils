@@ -50,4 +50,7 @@ def build_docker_container(
         )
         run_args.insert(3, "-p {0}".format(mapping))
 
+    print("docker run command:")
+    print(run_args)
+
     os.system(" ".join(run_args))
