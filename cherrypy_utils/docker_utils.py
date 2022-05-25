@@ -14,6 +14,7 @@ def build_docker_container(
     mount_source="/home/mraUser/online_experiments_data",
     mount_folder="",
     mount_destination="/online_experiments_data",
+    restart_policy="always",
 ):
     os.system("git pull")
     os.system("docker stop {0}".format(container_name))
@@ -27,7 +28,7 @@ def build_docker_container(
         # '--mount type=bind,source="{0}",target={1}'.format(pathlib.Path(mount_source, mount_folder), mount_destination),
         "-p 8080:8080",
         "-d",
-        "--restart always",
+        "--restart {0}".format(restart_policy),
         "--name {0}".format(container_name),
         "{1}:{0}".format(version_number, container_name.replace("_", "-")),
     ]
