@@ -15,6 +15,7 @@ def build_docker_container(
     mount_folder="",
     mount_destination="/online_experiments_data",
     restart_policy="always",
+    port_mappings=None,
 ):
     os.system("docker stop {0}".format(container_name))
     os.system("docker rm {0}".format(container_name))
@@ -39,4 +40,14 @@ def build_docker_container(
                 pathlib.Path(mount_source, mount_folder), mount_destination
             ),
         )
+
+    if port_mappings:
+        mapping = " ".join(
+            [
+                "{0}:{1}".format(source_port, destination_port)
+                for (source_port, destination_port) in port_mappings.items()
+            ]
+        )
+        run_args.insert(3, "-p {0}".format(mapping))
+
     os.system(" ".join(run_args))
