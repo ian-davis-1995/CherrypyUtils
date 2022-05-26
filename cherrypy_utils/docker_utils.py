@@ -21,7 +21,7 @@ def build_docker_container(
     os.system("docker rm {0}".format(container_name))
     os.system("docker container prune --force")
     os.system("docker image prune --all --force --filter until=700h")
-    os.system("docker build --network=host -t {1}:{0} .".format(version_number, container_name.replace("_", "-")))
+    os.system("docker build -t {1}:{0} .".format(version_number, container_name.replace("_", "-")))
     run_args = [
         "docker",
         "run",
