@@ -26,6 +26,7 @@ class ApplicationData:
         self.template_location = template_location
         self.production = production
         self.login_redirect_url = self.subdomain
+        self.additional_data = {}
 
         self.template_engine = templating.create_environment(template_location=template_location)
         authentication.initialize(api_key_filepath=self.api_key_filepath)
