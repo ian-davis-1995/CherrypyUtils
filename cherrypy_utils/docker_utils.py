@@ -16,6 +16,7 @@ def build_docker_container(
     mount_destination="/online_experiments_data",
     restart_policy="always",
     port_mappings=None,
+    network_mode=None,
 ):
     os.system("docker stop {0}".format(container_name))
     os.system("docker rm {0}".format(container_name))
@@ -48,6 +49,9 @@ def build_docker_container(
             ]
         )
         run_args.insert(3, "-p {0}".format(mapping))
+
+    if network_mode:
+        run_args.insert(3, "--network {0}".format(network_mode))
 
     print("docker run command:")
     print(run_args)
