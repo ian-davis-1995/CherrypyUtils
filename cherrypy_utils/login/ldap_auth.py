@@ -2,7 +2,7 @@
 import ldap
 import cherrypy
 
-server_address = "ldap://srv-1:3899"
+server_address = "ldap://your-server-here:400"
 server = ldap.initialize(server_address)
 
 
